@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Permutation Calculator</title>
+    <title>Parametrización Probabilidad</title>
     <script>
       function calculateAll() {
         // get the values of n and r from the input fields
@@ -16,14 +16,16 @@
         // show the result in scientific notation
         document.getElementById("result1").innerHTML = "Existirían "+ Number(permutation).toExponential(dec) +" formas de acomodar el grupo de estudiantes sin que tengan el mismo cumpleaños"
         
+        // calculate the combination using the formula
         let combination = factorial(n-r);
         combination= factorial(r)*combination;
         combination= factorial(n)/combination;
         
+        // save the multiplication between the combination and permutation
         asd= new Number;
         asd= Number(combination)*Number(permutation);
         
-
+        // show the results in scientific notiation
         document.getElementById("result").innerHTML=  asd.toExponential(dec)+" Son las diferentes formas de organizar a estudiantes sin repetir fecha de cumpleaños " 
         document.getElementById("result2").innerHTML= "Existen "+ Number(combination)+" formas de organizar a "+ n +" estudiantes en grupos de "+r
       }
