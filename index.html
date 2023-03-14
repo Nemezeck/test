@@ -1,17 +1,67 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Two Textfields and One Button Example</title>
+    <title>Permutation Calculator</title>
+    <script>
+      function calculateAll() {
+        // get the values of n and r from the input fields
+        let nDays = BigInt(365);
+        let n = BigInt(document.getElementById("n").value);
+        let r = BigInt(document.getElementById("r").value);
+        let dec= parseInt(document.getElementById("dec").value);
+
+        // calculate the permutation using the formula
+        let permutation = factorial(nDays) / factorial(nDays-n);
+
+        // show the result in scientific notation
+        document.getElementById("result1").innerHTML = "Existirían "+ Number(permutation).toExponential(dec) +" formas de acomodar el grupo de estudiantes sin que tengan el mismo cumpleaños"
+        
+        let combination = factorial(n-r);
+        combination= factorial(r)*combination;
+        combination= factorial(n)/combination;
+        
+        asd= new Number;
+        asd= Number(combination)*Number(permutation);
+        
+
+        document.getElementById("result").innerHTML=  asd.toExponential(dec)+" Son las diferentes formas de organizar a estudiantes sin repetir fecha de cumpleaños " 
+        document.getElementById("result2").innerHTML= "Existen "+ Number(combination)+" formas de organizar a "+ n +" estudiantes en grupos de "+r
+      }
+
+      
+
+      function factorial(num) {
+        // base case: if num is 0 or 1, return 1
+        if (num == 0n || num == 1n) {
+          return 1n;
+        } else {
+          // recursive case: multiply num by the factorial of num-1
+          return num * factorial(num-1n);
+        }
+      }
+    </script>
   </head>
   <body>
-    <form>
-      <label for="textfield1">Textfield 1:</label>
-      <input type="text" id="textfield1" name="textfield1"><br><br>
-      
-      <label for="textfield2">Textfield 2:</label>
-      <input type="text" id="textfield2" name="textfield2"><br><br>
-      
-      <input type="button" value="Submit">
-    </form>
+    <h1>Probabilidad</h1>
+    <h2>Parametrización ejercicio</h2>
+    <p>Ingrese los valores correspondientes:</p>
+    <label>Total estudiantes:</label>
+    <input type="number" id="n"><br><br>
+    <label>Grupos estudiantes:</label>
+    <input type="number" id="r"><br><br>
+    <label>Decimales despues de la coma:</label>
+    <input type="number" id="dec"><br><br>
+    <button onclick="calculateAll()">Calcular</button><br><br>
+    <div id="result"></div>
+    <div id="result1"></div>
+    <div id="result2"></div>
+    <h3>¿Cómo funciona?</h3>
+    <h4>1. Se obtienen los datos</h4>
+    <p>Se ingresa el número total de estudiantes, y se ingresa como se van a dividir los estudiantes, es decir, en grupos de 2, 3, etc...</p>
+    <h4>2. Se realizan los cálculos</h4>
+    <p>Con los datos anteriores se realiza la combinación, para calcular de cuantas formas se pueden organizar los estudiantes. Posteriormente se realiza la permutación, para así calcular los cumpleaños.</p>
+    <h4>3. Se muestran los resultados</h4>
+    <p>Con el número obtenido de la combinación, se muestran las maneras de organizar a los estudiantes los estudiantes. También se muestra el número obtenido de la permutación, mostrando el total de maneras diferentes de organizar sin repetir cumpleaños.</p>
+    <label for="myLink"><a href="https://physics47.files.wordpress.com/2023/03/20202020128_2.48_1_1-1.pdf">Ir al archivo original</a></label>
   </body>
 </html>
