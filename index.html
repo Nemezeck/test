@@ -41,20 +41,30 @@
           return num * factorial(num-1n);
         }
       }
+
+      function keyTyped(e){
+        var x= e.which || e.keycode;
+        if((x>=48&&x<=57))
+          return true;
+        else
+          return false;
+      }
     </script>
   </head>
   <body>
     <h1>Probabilidad</h1>
     <h2>Parametrización ejercicio</h2>
     <h4>¿De cuántas maneras diferentes se puede organizar un grupo de estudiantes sin que se repitan sus cumpleaños?</h4>
-    <h5>Este programa ayudará a resolver dicha pregunta.</h5>
+    <h4>Este programa ayudará a resolver dicha pregunta.</h4>
     <p>Ingrese los valores correspondientes:</p>
     <label>Total estudiantes:</label>
-    <input type="number" id="n"><br><br>
+    <input type="text" id="n"onkeypress="return keyTyped(event)"><br><br>
     <label>Grupos estudiantes:</label>
-    <input type="number" id="r"><br><br>
+    <input type="text" id="r" onkeypress="return keyTyped(event)"><br><br>
     <label>Decimales despues de la coma:</label>
-    <input type="number" id="dec"><br><br>
+    <input type="text" id="dec" onkeypress="return keyTyped(event)"><br><br>
+    
+    
     <button onclick="calculateAll()">Calcular</button><br><br>
     <div id="result"></div>
     <div id="result1"></div>
@@ -66,6 +76,8 @@
     <p>Con los datos anteriores se realiza la combinación, para calcular de cuantas formas se pueden organizar los estudiantes. Posteriormente se realiza la permutación, para así calcular los cumpleaños.</p>
     <h4>3. Se muestran los resultados</h4>
     <p>Con el número obtenido de la combinación, se muestran las maneras de organizar a los estudiantes los estudiantes. También se muestra el número obtenido de la permutación, mostrando el total de maneras diferentes de organizar sin repetir cumpleaños.</p>
-    <label for="myLink"><a href="https://physics47.files.wordpress.com/2023/03/20202020128_2.48_1_1-1.pdf">Ir al archivo original</a></label>
+    <h3>Referencias:</h3>
+    <label>1° Referencia (Ejercicio 2.48N°Sección.2.3N°Orden propuesto en Walpoley&Myers&Myers&Ye)  (2012, p.52 #).
+    </label><label for="myLink"><a href="https://physics47.files.wordpress.com/2023/03/20202020128_2.48_1_1-1.pdf">Ir al ejercicio resuelto</a></label>
   </body>
 </html>
