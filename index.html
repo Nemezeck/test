@@ -22,6 +22,21 @@
 			text-align: left;
 		}
 	</style>
+  <dialog id="favDialog">
+    <form method="dialog">
+      <p>
+        <label>Ingrese los valores adecuados. El grupo de estudiantes no puede ser mayor al total de estudiantes:
+          
+        </label>
+      </p>
+      <div>
+        <button value="cancel">Ok</button>
+        
+      </div>
+    </form>
+  </dialog>
+ 
+  <output></output>
 </head>
 <body>
 	<header>
@@ -38,13 +53,24 @@
         let nDays = BigInt(365);
         let n = BigInt(document.getElementById("n").value);
         let r = BigInt(document.getElementById("r").value);
-        let dec= parseInt(document.getElementById("dec").value);
+        let dec= (document.getElementById("dec").value);
+        let intDec=0;
+        if(dec==''){
+          intDec=3;
+        }else{
+        intDec= parseInt(document.getElementById("dec").value);
+        }
+        if(r>n){
+          return;
+        }
+        
+        
 
         // calculate the permutation using the formula
         let permutation = factorial(nDays) / factorial(nDays-n);
 
         // show the result in scientific notation
-        document.getElementById("result1").innerHTML = "Existirían "+ Number(permutation).toExponential(dec) +" formas de acomodar el grupo de estudiantes sin que tengan el mismo cumpleaños"
+        document.getElementById("result1").innerHTML = "Existirían "+ Number(permutation).toExponential(intDec) +" formas de acomodar el grupo de estudiantes sin que tengan el mismo cumpleaños"
         
         // calculate the combination using the formula
         let combination = factorial(n-r);
@@ -56,7 +82,7 @@
         asd= Number(combination)*Number(permutation);
         
         // show the results in scientific notiation
-        document.getElementById("result").innerHTML=  asd.toExponential(dec)+" Son las diferentes formas de organizar a estudiantes sin repetir fecha de cumpleaños " 
+        document.getElementById("result").innerHTML=  asd.toExponential(intDec)+" Son las diferentes formas de organizar a estudiantes sin repetir fecha de cumpleaños " 
         document.getElementById("result2").innerHTML= "Existen "+ Number(combination)+" formas de organizar a "+ n +" estudiantes en grupos de "+r
       }
 
